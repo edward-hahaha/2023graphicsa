@@ -44,7 +44,7 @@ void display()
 
         glPushMatrix();///week13-4
             glTranslatef(-1.200356,+0.466667,0);///week14-3-2
-            //glTranslatef(teapotX,teapotY,0);
+
             glRotatef(angle,0,0,1);///week14-3-2 TRT建出來
             glTranslatef(1.200356,-0.466667,0);///week14-3-2
             if(ID==2)glColor3f(1,0,0);///week14-3-1
@@ -91,15 +91,7 @@ void mouse(int button,int state,int x,int y)
     }
     display();
 }
-//void keyboard(unsigned char key ,int x,int y)///2keyboard函式
-//{
-//    if(fin==NULL){///2如果檔案還沒fopen(),就開他
-//        fclose(fout);///2前面的mouse會開fout 指標,所以要關掉
-//        fin = fopen("file4.txt","r");///2開檔
-//    }
-//    fscanf(fin,"%f %f",&teapotX,&teapotY);///2讀檔
-//    display();///2重畫畫面
-//}
+
 int main(int argc, char *argv[])
 {
 	glutInit(&argc, argv);
