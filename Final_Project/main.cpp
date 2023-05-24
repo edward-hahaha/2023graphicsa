@@ -1,3 +1,6 @@
+///week15切換不同關節，不同角度
+///int angle[20]; angle[0] angle[1] ...用它們來旋轉
+///motion()時，用angle[ID]來改
 #include <stdio.h>
 #include <GL/glut.h>
 #include "glm.h"///week13-1
@@ -21,7 +24,7 @@ void keyboard(unsigned char key,int x, int y){
 FILE * fout=NULL;///step2-2
 FILE * fin =NULL;///2
 float teapotX=0,teapotY=0;
-float angle=0,angle2=0,angle3=0;
+float angle[20]={};
 void display()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -45,7 +48,7 @@ void display()
         glPushMatrix();///week13-4
             glTranslatef(-1.200356,+0.466667,0);///week14-3-2
 
-            glRotatef(angle,0,0,1);///week14-3-2 TRT建出來
+            glRotatef(angle[2],0,0,1);///week14-3-2 TRT建出來
             glTranslatef(1.200356,-0.466667,0);///week14-3-2
             if(ID==2)glColor3f(1,0,0);///week14-3-1
             else glColor3f(1,1,1);///week14-3-1
@@ -53,7 +56,7 @@ void display()
 
             glPushMatrix();
                 glTranslatef(-1.946666,0.126667,0);///幫忙找出TRT移動的值///week14-3-3
-                glRotatef(angle,0,0,1);///week14-3-2 TRT建出來
+                glRotatef(angle[3],0,0,1);///week14-3-2 TRT建出來
                 glTranslatef(1.946666,-0.126667,0);///week14-3-2
 
                 if(ID==3)glColor3f(1,0,0);///week14-3-1
@@ -74,9 +77,9 @@ int oldX=0,oldY=0;///week13-4
 void motion (int x,int y){///week13-4
     teapotX += (x-oldX)/150.0;
     teapotY-= (y-oldY)/150.0;
+    angle[ID]+=(x-oldX);
     oldX = x;
     oldY = y;
-    angle= x;///week14-3-2
     printf("glTranslatef(%f,%f,0);\n",teapotX,teapotY);
     glutPostRedisplay();
 }
